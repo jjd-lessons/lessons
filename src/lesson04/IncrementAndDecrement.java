@@ -23,5 +23,13 @@ public class IncrementAndDecrement {
         System.out.println(--a); // 0
         System.out.println(a); // 0
 
+        int b = 1;
+
+        int result = b++ + ++b - b++ - b-- + ++b;
+        //           1   +   3 - 3   - 4   +   4
+        // выбор постфиксной / префиксной формы
+        // будет играть роль при передаче в методы
+        System.out.println(/* ++b или b++ */);
+
     }
 }

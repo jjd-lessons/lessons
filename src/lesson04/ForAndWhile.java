@@ -17,16 +17,30 @@ public class ForAndWhile {
         */
 
         // Пользователь вводит положительные целые числа.
-        // Нужно найти их сумму.
+        // 1. Нужно найти их сумму. +
+        // 2. Количество.
+        // 3. Среднее арифметическое.
+        // 4. Максимальное.
+        // для использования Scanner необходим import java.util.Scanner;
+        // до объявления класса
         Scanner scanner01 = new Scanner(System.in);
         System.out.println("Вводите положительные целые числа");
         int userInput;
         int sum = 0;
+        int counter = 0;
+        int maxNumber = 0;
+        double avg = 0;
         while (scanner01.hasNextInt() && (userInput = scanner01.nextInt()) > 0) {
             sum += userInput;
+            counter += 1;
+            if (userInput > maxNumber) maxNumber = userInput;
         }
+        avg = (double) sum / counter;
         System.out.println(sum);
+        System.out.println(counter);
+        System.out.println(avg);
 
+        // break continue метки
 
         Scanner scanner02 = new Scanner(System.in);
         while (true) {
@@ -74,8 +88,22 @@ public class ForAndWhile {
         System.out.println("Ваше число принято");
 
 
+        /*
+        1. Программа загадывает число в диапазоне [0;9)
+        2. Пользователь вводит число с клавиатуры
+        3. Программа в зависимости от введенного числа выводит в консоль следующее:
+        1) "загаданное число больше"
+        2) "загаданное число меньше"
+        3) "Вы угадали" (программа завершает работу)
+        4. Если введен -1, вывести "выход из программы" (программа завершает работу)
+        */
+
+        // Возвести число 'x' в степень 'k'. Использовать цикл.
+
+
         // III. FOR
         // for (; ;) {} // синтаксически правильный бесконечный цикл for
+
         // for (инициализация; условие; обновление) {
         //    тело цикла
         // }
@@ -92,6 +120,47 @@ public class ForAndWhile {
             double currentPrice = quantity * price;
             System.out.println(quantity + "кг. " + " стоят " + currentPrice);
         }
+
+        /*
+        1
+        12
+        123
+        1234
+        12345
+        123456 System.out.print(1);
+        */
+        // fori
+        for (int first = 1; first <= 6; first++) {
+            for (int second = 1; second <= first ; second++) {
+                System.out.print(second);
+            }
+            System.out.println();
+        }
+
+        // ссылочный тип
+        char oneChar = '1';
+        String oneStr = "1";
+        String stringVar01 = "строка";
+        String stringVar02 = "строка";
+        // String str01 = new String("строка");
+        // String str02 = new String("строка");
+        stringVar02 = stringVar02.toUpperCase(); // "СТРОКА"
+        // сравнение
+        System.out.println(stringVar01.equals(stringVar02));
+        String s = null;
+
+        // heap
+        // "строка"
+        // "строка"
+        // string pool
+        // "1"
+        // "строка"
+        // "СТРОКА"
+
+
+        // Вывести на экран первые
+        // 10 элементов последовательности 2 4 6 8 10 и тд
+
 
         // Метки
         /*
