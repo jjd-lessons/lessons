@@ -22,11 +22,15 @@ public class StringsLesson {
 
         System.out.println("\uD83D\uDC3E"); // суррогатная пара
 
-        // каждый символ юникода может быть представлен одним char или парой (суррогатная пара) char
+        // каждый символ юникода может быть
+        // представлен одним char или парой (суррогатная пара) char
 
         String string01 = "Cat";
         String string02 = "Cat";
         String string03 = new String("Cat");
+
+        // arr.length
+        System.out.println(string01.length());
 
         // Сравнение ссылок
         System.out.println(string01 == string02); // true
@@ -62,7 +66,9 @@ public class StringsLesson {
         // "str".startsWith();
         // upperString.strip().startsWith()
         // trim U+0020
-        if (upperString.strip().startsWith("JA") && lowerString.trim().endsWith("er")) {
+        // " JaVa " toUpperCase " JAVA " strip "JAVA"
+        if (upperString.strip().startsWith("JA") &&
+                lowerString.trim().endsWith("er")) {
             System.out.println(upperString.replace("A", "!") +
                     lowerString.repeat(2));
         }
@@ -90,7 +96,10 @@ public class StringsLesson {
 
         // StringBuilder или StringBuffer (использовать для конкатенации в цикле)
         StringBuilder sb = new StringBuilder();
-        sb.append(string01).append(" ").append(string02).append("!!!");
+        sb.append(string01)
+                .append(" ")
+                .append(string02)
+                .append("!!!");
         concat = sb.toString();
         System.out.println(concat);
 
@@ -100,12 +109,16 @@ public class StringsLesson {
                 .toString();
         System.out.println(reversed);
 
+
         String[][] matrix01 = new String[3][3];
+        // [[null, null, null], [null, null, null], [null, null, null]]
         String[][] matrix02 = {
                 {"open", "close", "process"},
-                {"close", "close", "process"},
-                {"process", "close", "close"}
+                {"close", "!!close!!", "process", "close"},
+                {"process", "close", "close", "close", "process"}
         };
+        System.out.println(matrix02[1][1]);
+        System.out.println(Arrays.deepToString(matrix01));
 
         String[][] animals = new String[3][]; // [null, null, null]
         animals[0] = new String[2]; // [[null, null], null, null]
@@ -116,12 +129,16 @@ public class StringsLesson {
         String item = "Книга";
         int count = 0;
         double rating = 5.5;
+        // Товар: Книга. На складе: 0шт. Рейтинг: 5.5.
+        // "Товар: + item + ". На складе: " + count + "шт.
+        // Рейтинг: " + rating + "."
+        // "Товар: {item}. На складе: {count}шт. Рейтинг: {rating}."
         String formattedString =
                 MessageFormat.format("Товар: {0}. На складе: {1}шт. Рейтинг: {2}.",
                         item, count, rating);
         System.out.println(formattedString);
 
-        MessageFormat messageFormat = new MessageFormat("Т: {0}." +
+        MessageFormat messageFormat = new MessageFormat ("Т: {0}." +
                 " Кол: {1, choice, 0#товар отсутствует|0<мало|5<много}. Р: {2}.", Locale.UK);
         formattedString = messageFormat.format(new Object[]{item, count, rating});
         System.out.println(formattedString);
@@ -156,7 +173,7 @@ public class StringsLesson {
         System.out.println(formattedString);
         stringBuilder.setLength(0);
 
-        formattedString = formatter.format("%1$d) Верный ответ: %2$.1f", number, value).toString();
+        formattedString = formatter.format("%1$d) Верный ответ: %2$.2f", number, value).toString();
         System.out.println(formattedString);
         stringBuilder.setLength(0);
 

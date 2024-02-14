@@ -100,7 +100,12 @@ public class ArraysLesson {
         // [null, "red", "blue", null,"orange", null]
         System.arraycopy(colors, 0, newColors03, 1, 3);
 
+        String[] colors01 = {"red", "blue", "orange"};
+        String[] colors02 = {"red", "blue", "orange"};
 
+        System.out.println(colors01 == colors02); // false
+        System.out.println(colors01.equals(colors01)); // аналогично ==
+        System.out.println(Arrays.equals(colors01, colors02));
 
 
 
