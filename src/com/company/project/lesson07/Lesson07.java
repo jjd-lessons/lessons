@@ -2,6 +2,8 @@ package com.company.project.lesson07;
 
 import com.company.project.lesson07.books.Author;
 import com.company.project.lesson07.books.Book;
+import com.company.project.lesson07.flowers.Bucket;
+import com.company.project.lesson07.flowers.Flower;
 
 // com.company.project.lesson06.Lesson06
 public class Lesson07 {
@@ -22,6 +24,15 @@ public class Lesson07 {
         int id = book01.getId();
         System.out.println(book01.getId());
         System.out.println(book01.getPrice());
+        Flower flower = new Flower(1, "азалия");
+        Bucket bucket = new Bucket(3);
+        bucket.addFlower(flower);
+        bucket.getFlowers()[0].setName("роза");
+                 // Flower[] -> Flower
+        // bucket.getFlowers()[0] = null;
+        for (Flower bucketFlower : bucket.getFlowers()) {
+            bucketFlower.setId(10);
+        }
     }
 }
 
