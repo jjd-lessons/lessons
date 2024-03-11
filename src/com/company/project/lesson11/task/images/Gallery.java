@@ -21,4 +21,15 @@ public class Gallery implements Drawable {
             drawable.draw();
         }
     }
+
+    @Override
+    public Gallery clone() {
+        Drawable[] drawablesNEW = new Drawable[drawables.length];
+        Gallery gallery = new Gallery(this.name, drawablesNEW);
+        for (int i = 0; i < drawablesNEW.length; i++) {
+            // drawablesNEW[i] = drawables[i].clone();
+            gallery.drawables[i] = drawables[i].clone();
+        }
+        return gallery;
+    }
 }

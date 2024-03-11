@@ -15,4 +15,8 @@ public final class Editor {
         drawable.draw();
     }
 
+    @Override
+    public Editor clone() {
+        return new Editor(this.drawable.clone());
+    }
 }
