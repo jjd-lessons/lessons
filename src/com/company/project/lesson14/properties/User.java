@@ -26,14 +26,24 @@ public class User<T> {
     }
 }
 /*
+User<Integer> u = new User<>(1);
+
+// id
 class Admin extends User<Integer> {}
 Admin admin = new Admin(1);
 
 class Admin<T> extends User<T> {}
+
 Admin<Integer> admin = new Admin<>(1);
+Admin<String> admin = new Admin<>("1fgwg33");
 
 class Admin<T, K> extends User<T> {
     private K code;
 }
 Admin<Integer, String> admin = new Admin<>(1);
+
+class Admin<T> extends User<String> {
+    private T code;
+}
+Admin<Integer> admin = new Admin<>("1");
 */

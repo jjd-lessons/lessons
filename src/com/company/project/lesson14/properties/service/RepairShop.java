@@ -6,7 +6,7 @@ import com.company.project.lesson14.properties.vehicle.Vehicle;
 
 // в качестве ограничения можно указать один класс и любое количество интерфейсов
 // в классе у generic свойства можно вызывать методы указанных типов и их супертипов
-public class RepairShop<T extends Vehicle & Repaintable & Runnable> extends Service<T>{
+public class RepairShop<T extends Vehicle & Runnable & Repaintable> extends Service<T>{
 
     public RepairShop(T element) {
         super(element);
