@@ -26,7 +26,7 @@ public class Task14 {
         // и возвращает PairContainer, где ключи - сумма четных элементов
         // значения - сумма нечетных элементов
     }
-     public <T> PairContainer<Integer, T[]> bb(T[] elem){
-        return new PairContainer<>()
-     }
+     
+        
+    
 }
