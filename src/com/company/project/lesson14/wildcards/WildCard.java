@@ -9,14 +9,14 @@ import java.util.List;
 public class WildCard {
     // ? - wildcards, может использоваться при объявлении переменных:
 
-    // 1. ограничение сверху (upper bounding)
-    // <? extends Car> - может быть Car и любой подтип (наследник)
+    // 1. ограничение сверху (upper bounding) ковариантность
+    // Service<? extends Car> - может быть Car и любой подтип (наследник)
 
-    // 2. ограничение снизу (lower bounding)
-    // <? super Car> - может быть Car и любой супертип (родитель)
+    // 2. ограничение снизу (lower bounding) инвариантность
+    // Service<? super Car> - может быть Car и любой супертип (родитель)
 
     // 3.Захват подстановочных знаков (wildcard capture)
-    // <?> - может быть все, что угодно
+    // Service<?> - может быть все, что угодно
 
 
     // Vehicle v = new Train();
@@ -35,6 +35,9 @@ public class WildCard {
             producerService.setElement(null);
         }
     }
+    // Service<Vehicle> vehicleService
+    // Service<MiniCar> miniCarService
+    // repairCars(vehicleService)
 
 
     // метод принимает на вход сервисы Car или его супертипов
@@ -47,10 +50,15 @@ public class WildCard {
             // ПОЧЕМУ КОМПИЛЯТОР НЕ ПОЗВОЛИТ добавить супертипы Car
         }
         // из контейнера с wildcard "? super" можно прочитать только Object
-        System.out.println(service.getElement()); // ПОЧЕМУ КОМПИЛЯТОР НЕ ПОЗВОЛИТ прочитать, например Car ???
+        System.out.println(service.getElement().hashCode()); // ПОЧЕМУ КОМПИЛЯТОР НЕ ПОЗВОЛИТ прочитать, например Car ???
     }
 
+    // Service<Vehicle> vehicleService
+    // Service<MiniCar> miniCarService
+    // getServiceInfo(miniCarService)
 
+    // public class MiniCar extends Car{}
+    // public class MiniCar02 extends Car{}
 
     // метод принимает на вход списки Car или его подтипы (MiniCar)
     public static void getServiceInfo(Service<? extends Car> service, int count) {
