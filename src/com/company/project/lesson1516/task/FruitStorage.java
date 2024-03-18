@@ -1,7 +1,6 @@
-package com.company.project.lesson15.task;
+package com.company.project.lesson1516.task;
 
 import java.util.List;
-import java.util.Objects;
 
 // склад содержит информацию о добавленных фруктах+
 public class FruitStorage {
@@ -22,7 +21,7 @@ public class FruitStorage {
 
         // Информация о фруктах добавляется в хранилище по следующим правилам:
         // 1. fruit не может быть null;
-        // 2. fruit не может быть ссылкой на существующий элемент коллекции
+        // 2. fruit не может быть ссылкой на существующий элемент коллекции   (==)
         // 3. если в коллекции fruits уже есть фрукт с типом и ценой, как у toStorageInfo,
         //   увеличивать значение свойства count фрукта коллекции на значение свойства count toStorageInfo.
         //   В противном случае добавлять toStorageInfo в коллекцию fruits.
@@ -60,4 +59,6 @@ public class FruitStorage {
     }
 
 
+
 }
+
