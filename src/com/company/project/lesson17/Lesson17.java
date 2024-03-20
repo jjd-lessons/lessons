@@ -1,9 +1,6 @@
 package com.company.project.lesson17;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Lesson17 {
     public static void main(String[] args) {
@@ -116,6 +113,109 @@ public class Lesson17 {
         // и возвращает список городов,
         // где количество покупателей меньше `max`.
 
+        // [USER, ADMIN, MODERATOR]
+        // 0, 1, 2
+        // values[0] = new ...
+        // values[1] = new ...
+        EnumMap<ClientAuthData.Role, List<ClientAuthData>> clientsByRole =
+                new EnumMap<>(ClientAuthData.Role.class);
+        clientsByRole.put(ClientAuthData.Role.USER, new ArrayList<>());
+        ClientAuthData client01 =
+                new ClientAuthData("qwe", "123", ClientAuthData.Role.ADMIN);
+        ClientAuthData client02 =
+                new ClientAuthData("asd", "234", ClientAuthData.Role.ADMIN);
+        ArrayList<ClientAuthData> clientList = new ArrayList<>();
+        clientList.add(client01);
+        clientList.add(client02);
+        clientsByRole.put(ClientAuthData.Role.ADMIN, clientList);
+
+        ClientAuthData client03 =
+                new ClientAuthData("user01", "123", ClientAuthData.Role.USER);
+
+        clientsByRole.get(ClientAuthData.Role.USER).add(client03);
+
+//        Написать static метод, который принимает
+//        на вход `EnumMap<ClientAuthData.Role, List<ClientAuthData>> map`
+//        и `ClientAuthData clientData` и добавляет `clientData`
+//        в список в зависимости от роли.
+
+//        Написать static метод, который принимает на вход
+//        `EnumMap<ClientAuthData.Role, List<ClientAuthData>> map`
+//        и возвращает `Map<String, String>`
+//        c парами userName - password
+//        в результирующий Map должны попасть userName и password
+//        пользователей (`ClientAuthData.Role.USER`)
+
+        EnumSet<ClientAuthData.Role> roles01 =
+                EnumSet.allOf(ClientAuthData.Role.class);
+
+        EnumSet<ClientAuthData.Role> roles02 =
+                EnumSet.noneOf(ClientAuthData.Role.class);
+        roles02.add(ClientAuthData.Role.USER);
+        roles02.add(ClientAuthData.Role.ADMIN);
+
+        EnumSet<ClientAuthData.Role> roles03 =
+                EnumSet.of(ClientAuthData.Role.ADMIN,
+                        ClientAuthData.Role.MODERATOR);
+
+        EnumSet<ClientAuthData.Role> roles04 =
+                EnumSet.range(ClientAuthData.Role.USER,
+                        ClientAuthData.Role.values()[2]);
+
+        TreeMap<String, List<String>> students = new TreeMap<>();
+        students.put("A", List.of("Иванова", "Петрова"));
+        students.put("B", List.of("Григорьев", "Гурова"));
+        students.put("C", List.of("Потапова", "Бокарев"));
+
 
     }
+
+    public static Map<String, String> getUsersData(
+            EnumMap<ClientAuthData.Role, List<ClientAuthData>> map){
+        if (map == null) throw new IllegalArgumentException();
+
+        List<ClientAuthData> userData = map.get(ClientAuthData.Role.USER);
+        if (userData == null) throw new IllegalArgumentException();
+
+        Map<String, String> result = new HashMap<>();
+        for (ClientAuthData user : userData) {
+            result.put(user.getUserName(), user.getPassword());
+        }
+        return result;
+
+    }
+
+    public static void addClientData(EnumMap<ClientAuthData.Role, List<ClientAuthData>> map,
+                                     ClientAuthData clientData){
+        if (map == null || clientData == null || clientData.getRole() == null) return;
+        // ClientAuthData.Role.USER
+        // clientData.getRole()
+
+        map.get(clientData.getRole()).add(clientData);
+
+        if (!map.containsKey(clientData.getRole())){
+            ArrayList<ClientAuthData> list = new ArrayList<>();
+            list.add(clientData);
+            map.put(clientData.getRole(), list);
+        }
+
+    }
+
+    public static List<String> citesList(HashMap<String, Integer> map,
+                                         int max) {
+        if (map == null || max < 0) throw new IllegalArgumentException();
+        if (map.isEmpty()) return Collections.emptyList();
+        List<String> cities = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            if (entry.getValue() != null && entry.getValue() < max) {
+                cities.add(entry.getKey());
+            }
+        }
+        return cities;
+    }
 }
+
+
+
+
+
