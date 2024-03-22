@@ -12,11 +12,14 @@ public class Lesson17 {
         // порядок хранения ключей и связанных с ними значений зависит от конкретных реализаций
         // есть возможность получения: set ключей, collection значений, set пар (ключ+значение)
 
+
         // Реализации:
+
         // 1. HashMap<KeyType, ValueType>
         // неупорядоченная по ключам ассоциация
         // позволяет использовать null в качестве ключа
         // реализована на основе hash таблицы
+        // capacity = 16
 
         // 2. LinkedHashMap<KeyType, ValueType>
         // упорядоченная по ключам ассоциация
@@ -32,11 +35,26 @@ public class Lesson17 {
         // хранит пары в отсортированном по ключам виде
         // для KeyType должен быть определен натуральный порядок сортировки или
         // в конструктор TreeMap необходимо передать экземпляр Comparator
+        // нельзя использовать null в качестве ключа
 
         // 5. WeakHashMap<KeyType, ValueType>
         // неупорядоченная по ключам ассоциация
         // реализована на основе hash таблицы
         // очищается сборщиком, когда на ключи не остаётся сильных ссылок
+
+        String stringKey01 = "cat01";
+        String stringKey02 = "cat02";
+        WeakHashMap<String, Integer> hashMap01 = new WeakHashMap<>();
+        hashMap01.put(stringKey01, 23);
+
+        HashMap<String, Integer> hashMap02 = new HashMap<>();
+        hashMap02.put(stringKey02, 23);
+
+        stringKey01 = null;
+        stringKey02 = null;
+        System.out.println(hashMap01); // 0
+        System.out.println(hashMap02); // 1
+
 
         // Функциональные интерфейсы + lambda, Stream API, Collectors API
 
@@ -214,7 +232,6 @@ public class Lesson17 {
         return cities;
     }
 }
-
 
 
 
