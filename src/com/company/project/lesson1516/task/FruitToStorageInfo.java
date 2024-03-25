@@ -3,6 +3,7 @@ package com.company.project.lesson1516.task;
 // содержит информацию о фруктах,
 // которые будут добавляться на склад
 
+/*
 public class FruitToStorageInfo {
     private final FruitType type;
     private double price; // за один фрукт
@@ -39,3 +40,4 @@ public class FruitToStorageInfo {
     }
 }
 
+*/

@@ -127,22 +127,14 @@ public class DataTypes /* Lesson02DataTypes */ { // класс...
         short shortValue = (short) intValue;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        int sum = 10;
+        sum = sum + 10; // 20
+        sum += 10; // 30
+        sum -= 10; // 20
+        sum *= 10; // 200
+        sum /= 10; // 20
+        sum %= 10; // 0
+        // чему равно значение sum?
     }
 }
 // JavaDevelopmentKit (JDK):

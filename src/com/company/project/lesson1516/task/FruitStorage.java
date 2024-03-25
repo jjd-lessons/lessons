@@ -3,6 +3,7 @@ package com.company.project.lesson1516.task;
 import java.util.List;
 
 // склад содержит информацию о добавленных фруктах+
+/*
 public class FruitStorage {
     // максимальное количество фруктов
     // заполняемость зависит не от количества переданных FruitToStorageInfo,
@@ -62,3 +63,4 @@ public class FruitStorage {
 
 }
 
+*/
