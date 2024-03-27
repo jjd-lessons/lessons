@@ -5,7 +5,7 @@ import java.util.*;
 
 
 
-public class Task03 {
+public class Task1920 {
     public static void main(String[] args) {
         // Написать реализацию методов task01 - task04
         // Перед выполнением посмотрите методы flatMap / flatMapToInt / map / mapToInt / allMatch / anyMatch / noneMatch
