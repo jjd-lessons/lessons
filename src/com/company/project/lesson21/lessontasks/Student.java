@@ -1,4 +1,4 @@
-package com.company.project.lesson21.task;
+package com.company.project.lesson21.lessontasks;
 
 import java.time.LocalDate;
 import java.util.Objects;

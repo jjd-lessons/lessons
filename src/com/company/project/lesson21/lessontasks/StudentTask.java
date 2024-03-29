@@ -1,9 +1,7 @@
-package com.company.project.lesson21.task;
+package com.company.project.lesson21.lessontasks;
 
 import java.time.LocalDate;
 import java.util.*;
-import java.util.function.Function;
-import java.util.function.IntFunction;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
