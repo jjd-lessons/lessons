@@ -71,9 +71,12 @@ public class CollectorsApi21 {
                 ));
 
         // объединение в мапу по определенным характеристикам
-        Map<Integer, List<Vehicle>> vehiclesByLevelOfWare = vehicles.stream()
+        // Function<? super T, ? extends K> classifier
+        // classifier описывает правила формирования ключа в мапе для элемента потока
+        // (vehicle) -> vehicle.getLevelOfWare()
+        Map<Integer, ArrayList<Vehicle>> vehiclesByLevelOfWare = vehicles.stream()
                 .collect(Collectors.groupingBy(vehicle -> vehicle.getLevelOfWare()
-                        // ,Collectors.toCollection(ArrayList::new)
+                        ,Collectors.toCollection(ArrayList::new)
                 ));
 
 
@@ -94,6 +97,13 @@ public class CollectorsApi21 {
                 .collect(Collectors.groupingBy(vehicle -> vehicle.getLevelOfWare(),
                         Collectors.filtering(vehicle -> vehicle.getLevelOfWare() > 5,
                                 Collectors.mapping(vehicle -> vehicle.getNumber(), Collectors.toList()))));
+
+        Map<Integer, List<String>> map06 = vehicles.stream()
+                .filter(vehicle -> vehicle.getLevelOfWare() > 5)
+                .collect(Collectors.groupingBy(vehicle -> vehicle.getLevelOfWare(),
+                        // Collectors.filtering(vehicle -> vehicle.getLevelOfWare() > 5,
+                                Collectors.mapping(vehicle -> vehicle.getNumber(), Collectors.toList())));
+
 
         // Collectors
         // reducing()
