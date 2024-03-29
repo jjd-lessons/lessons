@@ -1,9 +1,12 @@
 package com.company.project.lesson21.task;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.function.Function;
+import java.util.function.IntFunction;
+import java.util.function.Supplier;
+import java.util.function.ToIntFunction;
+import java.util.stream.Collectors;
 
 public class StudentTask {
     public static void main(String[] args) {
@@ -23,18 +26,62 @@ public class StudentTask {
         ));
 
         //  1. Разделить учеников на две группы: мальчиков и девочек.
-        //  Результат: Map<Student.Gender, ArrayList<Student>>
+        //     Результат: Map<Student.Gender, List<Student>>
+        Map<Student.Gender, List<Student>> task0100 = students.stream()
+                .collect(Collectors.groupingBy(student -> student.getGender()));
+
+        Map<Student.Gender, ArrayList<Student>> task0101 = students.stream()
+                .collect(Collectors.groupingBy(student -> student.getGender(),
+                        Collectors.toCollection(ArrayList::new)));
 
         // 2. Найти средний возраст учеников
+        ToIntFunction<Student> studentAge = student ->
+                LocalDate.now().getYear() - student.getBirth().getYear();
+        double avgAgeStream = students.stream()
+                // .filter()
+                .mapToInt(studentAge)
+                .average()
+                .orElse(-1);
+        double avgAgeCollector = students.stream()
+             // .filter()                       // ToDoubleFunction
+                .collect(Collectors.averagingDouble(student ->
+                        LocalDate.now().getYear() - student.getBirth().getYear()));
 
         //  3. Найти самого младшего ученика
+        Supplier<Student> defaultStudentGenerator = ()->{
+            // генерация ученика занимает 20 секунд
+            return  new Student(-1,
+                    null, null, LocalDate.now());
+        };
+        Student youngestStudent = students.stream()
+                .max((st1, st2) -> st1.getBirth().getYear() - st2.getBirth().getYear())
+                // Optional<Student>
+                .orElseGet(defaultStudentGenerator);
+                // .orElse(defaultStudentGenerator.get());
+        System.out.println(youngestStudent);
 
-        // 4. Собрать учеников в группы по году рождения,
-        // результат - Map<ГодРождения, List<Student>>
+        // 4. Собрать идентификаторы учеников в группы по году рождения,
+        //    результат - Map<ГодРождения, List<Integer>>
+        Map<Integer, List<Integer>> idsByYear = students.stream()
+                .collect(Collectors.groupingBy(
+                        st -> st.getBirth().getYear(),
+                        Collectors.mapping(st -> st.getNumber(),
+                                Collectors.toList())
+                ));
 
-        // 5. Отсортировать по полу, потом по дате рождения,
-        // потом по имени (в обратном порядке), собрать в список (ArrayList)
+        // 5. Получить список учеников, отсортированный
+        //    по полу ученика,
+        //    по дате рождения (если пол одинаковый),
+        //    по имени (в обратном порядке) (если пол и дата рождения одинаковые)
+        Comparator<Student> byGender =
+                (st1, st2) -> st1.getGender().ordinal() - st2.getGender().ordinal();
+        Comparator<Student> byBirth = (st1, st2) -> st1.getBirth().compareTo(st2.getBirth());
+        Comparator<Student> byName = (st1, st2) -> st1.getName().compareTo(st1.getName());
+        Comparator<Student> byNameR = byName.reversed();
+        Comparator<Student> comparator = byGender
+                .thenComparing(byBirth)
+                .thenComparing(byNameR);
+        Collections.sort(students, comparator);
 
-        // 6. Вывести в консоль всех учеников в возрасте от N до M лет
     }
 }
