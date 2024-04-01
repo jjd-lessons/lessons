@@ -1,5 +1,6 @@
 package com.company.project.lesson21.tasks.task01;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -8,20 +9,16 @@ public class TaskTracker {
     private String name;
     private Set<TaskToParticipant> tasks;
 
-
-
     // taskPredicates - условия добавления задач. Тип данных определить самостоятельно
     // условие добавление задачи по умолчанию: задача должна быть открытой
     // может быть заменено методом taskSettings
-    private /* Тип данных */ taskPredicates;
-
-
+    private /* Тип данных */ TaskPredicate taskPredicates;
 
     // participantPredicates - условия добавления исполнителей. Тип данных определить самостоятельно
     // условие добавление исполнителя по умолчанию: исполнитель должен быть
     // доступен по свойству active
     // может быть заменено методом participantSettings
-    private /* Тип данных */  participantPredicates;
+    private /* Тип данных */ ParticipantPredicate participantPredicates;
 
 
     // конструктор не должен быть доступен вне класса

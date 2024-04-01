@@ -1,6 +1,10 @@
 package com.company.project.lesson22.nested;
-
+// Exam.v1() вызов метода v1 осуществляется без создания экземпляра Exam
+// new Exam.Mark(); создание экземпляра Mark осуществляется без создания экземпляра Exam
 public class Exam {
+    // public static void v1(){}
+    // public class Mark{}
+
     private Subject subject;
     private Mark mark;
 
@@ -24,7 +28,7 @@ public class Exam {
         return mark;
     }
 
-    public static class Mark {
+    public static class Mark { // public class Mark
         private final int value;
         private String description;
 
