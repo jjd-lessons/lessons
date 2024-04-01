@@ -1,6 +1,6 @@
 package com.company.project.lesson22.lessontask;
 
-public class Task {
+public class Task01 {
     public static void main(String[] args) {
 
         // NutritionFacts milk = new NutritionFacts("молоко");
