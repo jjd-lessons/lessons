@@ -1,4 +1,4 @@
-package com.company.project.lesson22.singleton;
+package com.company.project.lesson23.singleton;
 
 
 public enum Settings03 {

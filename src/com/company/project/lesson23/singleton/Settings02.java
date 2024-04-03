@@ -1,6 +1,4 @@
-package com.company.project.lesson22.singleton;
-
-import java.time.LocalDate;
+package com.company.project.lesson23.singleton;
 
 public class Settings02 {
 

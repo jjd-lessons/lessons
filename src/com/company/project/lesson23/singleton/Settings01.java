@@ -1,22 +1,23 @@
-package com.company.project.lesson22.singleton;
+package com.company.project.lesson23.singleton;
 
-import java.io.Serial;
 import java.io.Serializable;
-import java.time.LocalDate;
 
+// многопоточность
+// сериализация - десериализация
+// рефлексия
 public class Settings01 implements Serializable {
-
+    private static Settings01 SETTINGS_01_INSTANCE; // new Settings01();
     // Реализация паттерна (ленивая - lazy)
     // для однопоточных сред
     // использование в многопоточной среде может породить множество экземпляров
     private Settings01() {
-        if (SETTINGS_01_INSTANCE != null) throw new IllegalStateException("Экземпляр уже создан");
+        if (SETTINGS_01_INSTANCE != null)
+            throw new IllegalStateException("Экземпляр уже создан");
     }
 
-    private static Settings01 SETTINGS_01_INSTANCE;
-
     public static Settings01 getSettings() {
-        if(SETTINGS_01_INSTANCE == null) SETTINGS_01_INSTANCE = new Settings01();
+        if(SETTINGS_01_INSTANCE == null)
+            SETTINGS_01_INSTANCE = new Settings01();
         return SETTINGS_01_INSTANCE;
     }
 
