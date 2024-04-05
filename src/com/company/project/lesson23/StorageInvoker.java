@@ -10,4 +10,8 @@ public class StorageInvoker {
     public void setCommand(Command command) {
         commands.put(command.getCode(), command);
     }
+
+    public void read(){
+        commands.get("read").execute();
+    }
 }
