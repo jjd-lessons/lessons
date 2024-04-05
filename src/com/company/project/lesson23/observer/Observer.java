@@ -1,5 +1,7 @@
 package com.company.project.lesson23.observer;
 
+import static com.company.project.lesson23.observer.Connection.Status.CONNECTED;
+
 public class Observer {
 
     public static void main(String[] args) {
@@ -20,7 +22,11 @@ public class Observer {
         // ACTIVE, CLOSE, CONNECTED, WAITING
 
         // наблюдатели
-        Listener ping = c -> System.out.println("проверка ping");
+        Listener ping = c -> {
+            if (connection.getStatus() == CONNECTED) {
+                System.out.println("проверка ping");
+            }
+        };
         Listener emailSender = c -> System.out.println("отправка сообщений " +
                 "на почту");
         Listener logger = new AppLogger();

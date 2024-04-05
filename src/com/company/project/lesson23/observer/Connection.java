@@ -12,7 +12,15 @@ public class Connection {
 
     public void changeStatus(Status status) {
         this.status = status;
-        listeners.forEach(listener -> listener.execute(this));
+        listeners.forEach(listener -> {
+            // if (listener.test(status)) {
+                listener.execute(this);
+            // }
+        });
+    }
+
+    public Status getStatus() {
+        return status;
     }
 
     public enum Status {
