@@ -1,23 +1,19 @@
 package com.company.project.lesson24.ioapi;
 
-import java.io.*;
+import java.io.FilterOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 public class InputOutputStreams {
     public static void input(){
-        try (InputStream inputStream = *//* входящий поток, наследник InputStream*//*){
-            // 1. чтение в массив bytes01,
-                // возвращает количество прочитанных байт
-                // 4: 12, 44, 67, 12
+        /*try (InputStream inputStream = *//* входящий поток, наследник InputStream*//*){
+            // 1. чтение в массив bytes01, возвращает количество прочитанных байт
             byte[] bytes01 = new byte[inputStream.available()];
-            // bytes01 [0,0,0,0]
-            int data = inputStream.read(bytes01);
-            // bytes01 [12, 44, 67, 12]
-            // data = 4
-            // 2. чтение в массив bytes02 len байт
-        // с отступом offset, возвращает количество прочитанных байт
+            inputStream.read(bytes01);
+
+            // 2. чтение в массив bytes02 len байт с отступом offset, возвращает количество прочитанных байт
             // прочитанные байты записываются в динамический массив
-            ByteArrayOutputStream byteArray =
-                    new ByteArrayOutputStream(); // динамический массив для накопления данных
+            ByteArrayOutputStream byteArray = new ByteArrayOutputStream(); // динамический массив для накопления данных
             byte[] bytes02 = new byte[512];
             int data;
 
@@ -30,7 +26,7 @@ public class InputOutputStreams {
         } catch (IOException e) {
             System.out.println("во время чтения произошла ошибка"); // или
             System.out.println("во время закрытия ресурса произошла ошибка");
-        }
+        }*/
     }
 
 
@@ -70,8 +66,7 @@ public class InputOutputStreams {
             // 1. записывает байты из bytesWithData в поток
             outputStream.write(bytesWithData);
 
-            // 2. записывает len байт из bytesWithData
-            в поток с отступом offset
+            // 2. записывает len байт из bytesWithData в поток с отступом offset
             outputStream.write(bytesWithData, 0, bytesWithData.length / 2);
 
             // 3. записывает один байт в поток
@@ -99,7 +94,7 @@ public class InputOutputStreams {
              // дополнительный функционал, должен быть наследником FilterOutputStream
              AppOutputDecorator decorator = new AppOutputDecorator(outputStream)){
             // 1. записывает байты из bytesWithData в поток
-            decorator.write(bytesWithData);
+            decorator.write(bytesWithData[0]);
 
             // 2. записывает len байт из bytesWithData в поток с отступом offset
             decorator.write(bytesWithData, 0, bytesWithData.length / 2);
