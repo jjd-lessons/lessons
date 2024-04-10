@@ -11,11 +11,14 @@ import java.nio.file.StandardOpenOption;
 public class WriteFiles {
     public static void writeWithFiles(String filename, String data) throws IOException {
         // запись строки
-        Files.writeString(Paths.get(filename), data, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        Files.writeString(Paths.get(filename), data,
+                StandardOpenOption.CREATE,
+                StandardOpenOption.APPEND);
 
         /* запись массива байт
         byte[] bytesData = data.getBytes();
-        Files.write(Paths.get(filename), bytesData, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        Files.write(Paths.get(filename), bytesData, StandardOpenOption.CREATE,
+        StandardOpenOption.APPEND);
         */
     }
 

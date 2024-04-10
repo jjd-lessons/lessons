@@ -23,7 +23,7 @@ public class InputOutputStreams {
 
             // 3. возвращает прочитанный байт
             int readByte = inputStream.read();
-        } catch (IOException e) {
+        } catch (IOE    xception e) {
             System.out.println("во время чтения произошла ошибка"); // или
             System.out.println("во время закрытия ресурса произошла ошибка");
         }*/
