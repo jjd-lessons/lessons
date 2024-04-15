@@ -127,8 +127,10 @@ interrupt(),
 Свойства и методы, участвующие в реализации данного механизма:
 
 1. свойство `boolean interrupted` - изначально в значении `false`;
-2. метод `boolean isInterrupted()` - возвращает значение свойства `interrupted`;
-3. метод `void interrupt()` - меняет значение свойства `interrupted` на `true` (не останавливает поток, просто меняет
+2. метод `boolean isInterrupted()` - возвращает значение свойства
+`interrupted`;
+3. метод `void interrupt()` - меняет значение свойства 
+`interrupted` на `true` (не останавливает поток, просто меняет
    значение свойства).
 
                  Thread thread = new Thread(()->{ 

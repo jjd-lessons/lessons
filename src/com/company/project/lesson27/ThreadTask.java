@@ -18,7 +18,7 @@ public class ThreadTask extends Thread{
     @Override
     public void run(){
         this.setPriority(10);
-        System.out.println(Thread.currentThread().getName());
+        System.out.println("ThreadTask" + Thread.currentThread().getName());
         printList();
     }
 }

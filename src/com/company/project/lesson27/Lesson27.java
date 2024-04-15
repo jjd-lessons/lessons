@@ -12,7 +12,7 @@ public class Lesson27 {
         stringList.add("3");
         stringList.add("4");
 
-        ThreadTask threadTask01 = new ThreadTask(stringList);
+        ThreadTask threadTask01 = new ThreadTask(stringList); // NEW
         System.out.println(threadTask01.getState());
         threadTask01.setName("ThreadTask 01");
         ThreadTask threadTask02 = new ThreadTask(stringList);
@@ -21,6 +21,7 @@ public class Lesson27 {
         threadTask01.start();
         threadTask02.start();
 
+        System.out.println(Thread.currentThread().getName());
 
         RunnableTask runnableTask = new RunnableTask("task");
         Thread threadWithRunnable = new Thread(runnableTask);
@@ -28,7 +29,7 @@ public class Lesson27 {
         threadWithRunnable.start();
         // void run();
 
-        /*Thread threadWithLambda = new Thread(()->{
+        Thread threadWithLambda = new Thread(()->{
             while (true) {
                 System.out.println(Thread.currentThread().getName());
             }
@@ -36,7 +37,7 @@ public class Lesson27 {
         // фоновый поток
         threadWithLambda.setName("daemon");
         threadWithLambda.setDaemon(true);
-        threadWithLambda.start();*/
+        threadWithLambda.start();
         // Thread.currentThread().setDaemon(true);
 
         List<Double> doubles = new ArrayList<>();
@@ -47,15 +48,17 @@ public class Lesson27 {
             } catch (InterruptedException e) {
                 System.out.println(e.getMessage());
             }
-            doubles.add(Math.random());
+            doubles.add(Math.random()); // 0.654
         });
-
+        // main
         addToDoubles.setName("addToDoubles");
-        addToDoubles.start();
+        addToDoubles.start(); // main | addToDoubles
+        // System.out.println(doubles);|  Thread.sleep(3000);
+        System.out.println(doubles); // []
 
         try {
             // addToDoubles.join(); // main
-            addToDoubles.join(1000);
+            addToDoubles.join(4000);
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
         }
@@ -63,22 +66,20 @@ public class Lesson27 {
 
         System.out.println("main");
 
-        // Thread  interrupted - false
-        //        .isInterrupted() -> false
-        //        .interrupt() -> interrupted -> true
-        //        .isInterrupted() -> true
+
         Thread thread = new Thread(()->{
             while (!Thread.currentThread().isInterrupted()) {
                 // инструкции потока
                 try {
                     Thread.sleep(1000);
-                } catch (InterruptedException e) { // interrupted - false
-                    Thread.currentThread().interrupt(); // interrupted - true
+                } catch (InterruptedException e) {  // interrupted=false
+                    Thread.currentThread().interrupt(); // interrupted=true
                 }
             }
         });
+        // thread.interrupted - false
         thread.start();
-        thread.interrupt(); // interrupted - true
+        thread.interrupt();
     }
 }
 
