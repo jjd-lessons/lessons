@@ -1,7 +1,9 @@
 package com.company.project.lesson25;
 
 
-public class UserData {
+import java.io.Serializable;
+
+public class UserData implements Serializable {
     private String username;
     private String password;
 

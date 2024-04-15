@@ -10,10 +10,7 @@ public class Settings01 implements Serializable {
     // Реализация паттерна (ленивая - lazy)
     // для однопоточных сред
     // использование в многопоточной среде может породить множество экземпляров
-    private Settings01() {
-        if (SETTINGS_01_INSTANCE != null)
-            throw new IllegalStateException("Экземпляр уже создан");
-    }
+
 
     public static Settings01 getSettings() {
         if(SETTINGS_01_INSTANCE == null)
@@ -48,12 +45,17 @@ public class Settings01 implements Serializable {
         return SETTINGS_01_INSTANCE;
     }
     */
+    private Settings01() {
+        if (SETTINGS_01_INSTANCE != null)
+            throw new IllegalStateException("Экземпляр " +
+                    "уже создан");
+    }
 
     @Override
     protected Object clone() {
-        throw new IllegalStateException("Клонирование не поддерживается");
+        throw new IllegalStateException("Клонирование " +
+                "не поддерживается");
     }
-
 
     protected Object readResolve(){ // когда ObjectInputStream читает из потока, перед десериализацией
         return SETTINGS_01_INSTANCE;

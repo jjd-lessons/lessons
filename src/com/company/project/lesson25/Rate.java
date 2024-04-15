@@ -1,7 +1,9 @@
 package com.company.project.lesson25;
 
 
-public class Rate {
+import java.io.Serializable;
+
+public class Rate implements Serializable {
     private int id;
     private RateType rateType;
 

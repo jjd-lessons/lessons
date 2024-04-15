@@ -1,7 +1,9 @@
 package com.company.project.lesson25;
 
 
-public class Item {
+import java.io.Serializable;
+
+public class Item implements Serializable {
     private long id;
     private String name;
     private double price;

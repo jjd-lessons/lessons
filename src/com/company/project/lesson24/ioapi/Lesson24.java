@@ -25,13 +25,15 @@ public class Lesson24 {
                 StandardOpenOption.CREATE,
                 StandardOpenOption.APPEND);
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         String string = "Слово";
         String string2 = "Опять";
         Set<String> strings = Set.of(string, string2);
         List<String> listString;
         try (Stream<String> lines = Files.lines(Path.of("C:/Java_Education/ITMO/Lessons/src/com/smirnov/project/lesson25/FileTask1"))) {
             listString = new ArrayList<>(lines.collect(Collectors.toList()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         System.out.println(listString);
         System.out.println(calculate(strings, listString));
