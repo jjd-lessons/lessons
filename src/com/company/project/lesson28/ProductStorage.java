@@ -9,21 +9,23 @@ import java.util.List;
 public class ProductStorage {
     private final List<Product> products;
     private final File file = new File("save.txt");
-    private final int maxSize;
+    private final int maxSize; //10
 
     public ProductStorage(List<Product> products, int maxSize) {
         this.products = products;
         this.maxSize = maxSize;
     }
 
-    synchronized public void addProductToList(Product product)
+    // проблема изменения общего ресурса - synchronized
+    // проблема производитель - потребитель - wait / notify
+    public synchronized void addProductToList(Product product)
             throws InterruptedException {
         while (products.size() /* == */ >= maxSize) wait();
         products.add(product);
         notify();
     }
 
-    synchronized public void writeProductsFromList()
+    public synchronized void writeProductsFromList()
             throws InterruptedException {
         while (products.size() == 0) wait();
         Product removed = products.removeLast();

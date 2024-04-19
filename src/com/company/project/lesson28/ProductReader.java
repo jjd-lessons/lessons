@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class ProductReader extends Thread{
+public class ProductReader extends Thread {
     private List<Product> products;
     private File file; // Product in file - name::price::count
 
@@ -24,9 +24,9 @@ public class ProductReader extends Thread{
         }
     }
 
-    private List<Product> getProductsFromFile(){
-        try (Stream<String> stringStream = Files.lines(file.toPath())){
-            return stringStream.map(string->{
+    private List<Product> getProductsFromFile() {
+        try (Stream<String> stringStream = Files.lines(file.toPath())) {
+            return stringStream.map(string -> {
                 String[] strings = string.split("::");
                 return new Product(
                         strings[0],
