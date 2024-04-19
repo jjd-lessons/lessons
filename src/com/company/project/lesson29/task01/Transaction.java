@@ -12,7 +12,10 @@ public class Transaction implements Runnable{
     }
 
     @Override
-    public void run() {
+    public /*synchronized*/ void run() {
+        /*synchronized (this){
+
+        }*/
         // TODO перевод денежных средств с src на dst в количестве money
     }
 }
