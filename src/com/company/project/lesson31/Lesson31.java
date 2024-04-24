@@ -14,7 +14,7 @@ public class Lesson31 {
         BankAccountVolatile accountVolatile = new BankAccountVolatile();
         ArrayList<Thread> threadsVolatile = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
-            threadsVolatile.add(new Thread(()->{
+            threadsVolatile.add(new Thread(() -> {
                 for (int j = 0; j < 1000; j++) {
                     accountVolatile.putMoney(10);
                 }
@@ -34,7 +34,7 @@ public class Lesson31 {
         BankAccountAtomic accountAtomic = new BankAccountAtomic();
         ArrayList<Thread> threadsAtomic = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
-            threadsAtomic.add(new Thread(()->{
+            threadsAtomic.add(new Thread(() -> {
                 for (int j = 0; j < 1000; j++) {
                     accountAtomic.putMoney(10);
                 }
@@ -51,23 +51,5 @@ public class Lesson31 {
         }
         System.out.println(accountAtomic.getBalance());
 
-        List<String> strings = new ArrayList<>();
-        List<String> strings1 = Collections.synchronizedList(strings);
-
-    }
-
-    // java 21
-    private static void virtualThreads(){
-        // Thread
-        // виртуальные потоки
-        // фоновые
-        Thread virtual01 = Thread.startVirtualThread(()->{});
-        Thread.startVirtualThread(()->{});
-        Thread virtual02 = Thread
-                .ofVirtual()
-                .name("virtual-02")
-                .unstarted(()->{});
-        virtual02.start();
-        ExecutorService virtualService = Executors.newVirtualThreadPerTaskExecutor();
     }
 }
